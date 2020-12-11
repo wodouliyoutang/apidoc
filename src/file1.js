@@ -22,62 +22,24 @@
  */
 
 
-// ------------------------------------------------------------------------------------------
-// Current Permissions.
-// ------------------------------------------------------------------------------------------
-/**
- * @apiDefine admin Admin access rights needed.
- * Optionally you can write here further Informations about the permission.
- *
- * An "apiDefine"-block can have an "apiVersion", so you can attach the block to a specific version.
- *
- * @apiVersion 1.0.0
- */
-
-
-/**
- * @api {post} /user/:id 新建一个用户
- * @apiVersion 1.0.0
- * @apiName GetUser
- * @apiGroup User
- * @apiPermission admin
- * @apiSampleRequest http://www.server1.com/open_api/advertiser/fund_daily
- * @apiDescription Here you can describe the function.
- * Multilines are possible.
- *
- * @apiParam {String} id The Users-ID.
- *
- * @apiSuccess {String} id         The Users-ID.
- * @apiSuccess {Date}   name       Fullname of the User.
- *
- * @apiError UserNotFound   The error description text in version 0.1.0.
- */
-
-
  
 /**
- * @api {get} /user 读取一个用户
+ * @api {get} /token/auth_build 账户/代理商/管家授权
  * @apiVersion 1.0.0
  * @apiName PostUser
- * @apiGroup User
- * @apiSampleRequest http://www.server1.com/open_api/advertiser/fund_daily
+ * @apiGroup 授权
+ * @apiSampleRequest http://www.server1.com/token/auth_build
  * @apiPermission none
  *
- * @apiDescription In this case "apiUse" is defined and used.
- * Define blocks with params that will be used in several functions, so you dont have to rewrite them.
+ * @apiDescription 各项目授权，需要先注册项目/公司，第三方授权成功后回跳转传入的 url 地址
  * 
- * @apiParam {Number} page_size=3 分页数. 12
- * @apiParam {Date} begin_time=2020-11-30 开始时间.
- * @apiParam {Date} end_time=2020-10-01 Name of the User.
- * @apiParam {String} [firstname]       Optional Firstname of the User.
- * @apiParam {String} lastname          Mandatory Lastname.
- * @apiParam {String} country="DE"      Mandatory with default value "DE".
- * @apiParam {Number} [age=18]          Optional Age with default 18.
- * @apiParam (Login) {String} pass      Only logged in users can post this.
- *                                      In generated documentation a separate
- *                                      "Login" Block will be generated.
- *
- * @apiParam {Object} [address]         nestedField nested address object.
+ * @apiParam {Number} level  	等级
+ * @apiParam {String} signal       授权标识.
+ * @apiParam {String} company_id          公司id.
+ * @apiParam {String} idPlatform="100"      平台id 100 200 400 401.
+ * @apiParam {String} url      			授权回调.
+ * @apiParam {Number} child_agent  	深度同步
+ * @apiParam (Session) {String} token      调用凭证.
  *
  * @apiUse CreateUserError
  */
