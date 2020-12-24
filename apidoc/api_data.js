@@ -23,53 +23,130 @@ define({ "api": [
             "group": "Parameter",
             "type": "Number",
             "optional": false,
-            "field": "level",
-            "description": "<p>等级</p>"
+            "field": "mode",
+            "description": "<p>类型</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": false,
+            "field": "advertiser_id",
+            "description": "<p>账户id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": false,
+            "field": "data_date",
+            "description": "<p>同步日期.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "signal",
-            "description": "<p>授权标识.</p>"
+            "field": "type",
+            "description": "<p>扩展1.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/sync.js",
+    "groupTitle": "脚本"
+  },
+  {
+    "type": "post",
+    "url": "/open_api/sync/import_excel",
+    "title": "导入外部数据",
+    "version": "1.0.0",
+    "name": "import_excel",
+    "group": "脚本",
+    "sampleRequest": [
+      {
+        "url": "http://api.data.test.netjoy.com/open_api/sync/import_excel"
+      }
+    ],
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id_owner",
+            "description": "<p>操作人</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "File",
             "optional": false,
-            "field": "company_id",
-            "description": "<p>公司id.</p>"
-          },
+            "field": "file",
+            "description": "<p>表格文件.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/sync.js",
+    "groupTitle": "脚本"
+  },
+  {
+    "type": "get",
+    "url": "/open_api/sync/import_excel_list",
+    "title": "外部导入记录",
+    "version": "1.0.0",
+    "name": "import_excel_list",
+    "group": "脚本",
+    "sampleRequest": [
+      {
+        "url": "http://api.data.test.netjoy.com/open_api/sync/import_excel_list"
+      }
+    ],
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
-            "field": "idPlatform",
-            "defaultValue": "100",
-            "description": "<p>平台id 100 200 400 401.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "url",
-            "description": "<p>授权回调.</p>"
+            "field": "id",
+            "description": "<p>记录id</p>"
           },
           {
             "group": "Parameter",
             "type": "Number",
             "optional": false,
-            "field": "child_agent",
-            "description": "<p>深度同步</p>"
-          }
-        ],
-        "Session": [
+            "field": "id_owner",
+            "description": "<p>操作人</p>"
+          },
           {
-            "group": "Session",
-            "type": "String",
+            "group": "Parameter",
+            "type": "Number",
             "optional": false,
-            "field": "token",
-            "description": "<p>调用凭证.</p>"
+            "field": "status",
+            "description": "<p>状态</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": false,
+            "field": "date",
+            "description": "<p>日期.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page_size",
+            "description": "<p>每页条数</p>"
           }
         ]
       }
@@ -101,53 +178,36 @@ define({ "api": [
             "group": "Parameter",
             "type": "Number",
             "optional": false,
-            "field": "level",
-            "description": "<p>等级</p>"
+            "field": "mode",
+            "description": "<p>类型</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": false,
+            "field": "advertiser_id",
+            "description": "<p>账户id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": false,
+            "field": "enum",
+            "description": "<p>流水类型.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": false,
+            "field": "data_date",
+            "description": "<p>同步日期.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "signal",
-            "description": "<p>授权标识.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "company_id",
-            "description": "<p>公司id.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "idPlatform",
-            "defaultValue": "100",
-            "description": "<p>平台id 100 200 400 401.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "url",
-            "description": "<p>授权回调.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "child_agent",
-            "description": "<p>深度同步</p>"
-          }
-        ],
-        "Session": [
-          {
-            "group": "Session",
-            "type": "String",
-            "optional": false,
-            "field": "token",
-            "description": "<p>调用凭证.</p>"
+            "field": "type",
+            "description": "<p>扩展1.</p>"
           }
         ]
       }
